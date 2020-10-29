@@ -1,0 +1,25 @@
+type,name,description,daysToKeep,daysToKeepLog,daysToKeepSystem,numLinkedPolicies,parentPolicyId,retries,retryIntervalMins,"type_protection_policy (values: KRPO, KREGULAR)","WormRetentionType_ProtectionPolicyRequest (KNONE,KCOMPLIANCE,KADMINISTRATIVE)",skipIntervalMins,vmwareParameters,excludedDisks,,,,,POLICY
+,,,"type (values: continuous, daily, monthly, rpo)",daysOfWeek (for daily and monthly),weekOfMonth (for monthly),periodicy,backupIntervalMinutes (for continuous),"intervalUnit for RPO (values: KMINUTES, KHOURS, KDAYS, KWEEKS, KMONTHS)",mulitplyer of invervalUnit,,,,,,,,,,SCHED
+,type,excluded_disks,bus_number,controler_type,unit_number,,,fallback_to_crash,,,,,,,,,,,RPO
+,,,BackupRunType,daysToKeep,multiplier,,,Periodicity_ExtendedRetentionPolicy,,,,,,,,,,Extended retention policies ar not supported now,EXT_RET_POL
+,DayOfWeek,End Hour,End Minute,Start Hour,Start Minute,,,,,,,,,,,,,,BKO_PERIOD
+,,,,,,,,,,,,,,,,,,Cloud deploy policies are not supported now,CLOUD_DEP_POL 
+,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,
+POLICY,policyno1,This is the first policy,11,22,33,5,3,4,7,KRPO,KCOMPLIANCE,6,,,,,,,
+SCHED,Full,this is the first schedule,monthly,KSUNDAY;KMONDAY,KSECOND,,,,,,,,,,,,,,
+SCHED,Incr,this is the second schedule,daily,KFRIDAY,,,,,,,,,,,,,,,
+SCHED,Log,this is the third schedule,continuous,,,,22,,,,,,,,,,,,
+SCHED,System,this is the fourth schedule,rpo,,,,,KDAYS,1,,,,,,,,,,
+EXT_RET_POL,,,kFull,30,5,,,kDay,,,,,,,,,,,
+EXT_RET_POL,,,kLog,20,3,,,kHour,,,,,,,,,,,
+RPO,VMWare,TRUE,2,IDE,3,,,FALSE,,,,,,,,,,,
+POLICY,policyno2,This is the second policy,5,5,5,,,,,,,,,,,,,,
+SCHED,Full,adf,32,24,5,,,,,,,,,,,,,,
+SCHED,Incr, afd,23,32,34,,,,,,,,,,,,,,
+SCHED,System,afa,23,23,2,,,,,,,,,,,,,,
+POLICY,dafa,dfa,8,9,4,,,,,,,,,,,,,,
+BKO_PERIOD,kMonday,22,45,16,55,,,,,,,,,,,,,,
+BKO_PERIOD,kWednesday,23,43,15,49,,,,,,,,,,,,,,
+SCHED,Full,dfa,3,3,32,,,,,,,,,,,,,,
+END,,,,,,,,,,,,,,,,,,,
