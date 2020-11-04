@@ -3,6 +3,9 @@
 # open netbackup config file - output of bppllist -L -allpolicies
 streamPolicies = open("bppllist.txt")
 
+# constants definitions
+
+# dictionary of NetBackup retention levels
 nbu_retention_levels = {
     "0" : "1 week",
     "1": "2 weeks",
@@ -15,6 +18,21 @@ nbu_retention_levels = {
     "8" : "1 year",
     "9": "infinite",
      }
+
+
+nbu_ret_level_days = {
+    "0" : "7",
+    "1": "14",
+    "2": "21",
+    "3" : "31",
+    "4": "62",
+    "5": "93",
+    "6": "186",
+    "7": "279",
+    "8" : "365",
+    "9": "1000",
+     }
+# dictionary of NetBackup policy types
 
 nbu_policy_type = {
 "0" : "Standard (UNIX and Linux clients)",
@@ -43,6 +61,22 @@ nbu_policy_type = {
 "44" : "BigData"
 }
 
+nbuDayOfWeek = {
+    1 : "KSUNDAY",
+    3 : "KMONDAY",
+    5 : "KTUESDAY",
+    7 : "KWEDNESDAY",
+    9 : "KTHURSDAY",
+    11 : "KFRIDAY",
+    13 : "KSATURDAY"
+}
+
+
+# Variable definitions
+# vPolicyName - saved NBU policy name
+# vPolicyType - saved NBU policy type
+# vScheduleType - saved NBU schedule type
+# vRpoInterval
 
 # for each policy generate line
 while 1 == 1:
@@ -54,32 +88,45 @@ while 1 == 1:
         break
 
     if tab_params[0] == "CLASS":
-        print ("POLICY: ", tab_params)
+        vPolicyName = tab_params[1]
+  #      print ("POLICY: ", vPolicyName)
 
     if tab_params[0] == "INFO":
-        print ("INFO: This policy is ", nbu_policy_type[tab_params[1]], "policy")
+        vPolicyType = nbu_policy_type[tab_params[1]]
+        print ("RPO," , vPolicyType)
 
     if tab_params[0] == "SCHED":
-        print ("SCHED: ", tab_params)
+  #      print ("SCHED: ", tab_params)
         if tab_params[2] == "0":
-            print("this is full schedule")
+            vSchedType = "Full"
+  #          print("this is ", vSchedType)
         if tab_params[2] == "1":
-            print("this is differential schedule")
+            vSchedType = "Incr"
+   #         print("this is", vSchedType )
         if tab_params[2] == "2":
-            print("this is cumulative incrmental schedule")
+            vSchedType = "Incr"
+#          print("this is ", vSchedType)
+        vRpoInterval = int(tab_params[4])/3600
+ #       print("it runs every", vRpoInterval , "hours")
 
-        print("it runs every", int(tab_params[4])/3600, "hours")
-        print("its retention level is", tab_params[5])
-        print("it keeps data for", nbu_retention_levels[tab_params[5]])
+        vRet_days = nbu_ret_level_days[tab_params[5]]
+
+        print("POLICY," , vPolicyName.strip() ,",some description," , vRet_days , "," , vRet_days , "," , vRet_days)
 
     if tab_params[0] == "SCHEDWIN":
-        print ("WINDOW: ", tab_params)
+ #       print ("WINDOW: ", tab_params)
+        print("SCHED,", vSchedType, ",some desc,rpo,,,,,KHOURS," , int(vRpoInterval) , ",,,,,,,,,,")
         for i in [1,3,5,7,9,11,13]:
-            st_hour=int (tab_params[i])
-            st_hour /=  3600
-            st_minute = int (tab_params[i+1])
-            print ("it starts at ", st_hour)
-            print("and finishes an", st_minute/3600, "hours later")
+            vBkoutEnd = 0
+            vStartHour=int (tab_params[i])
+            vStartHour /=  3600
+            vDuration = int (tab_params[i+1])
+ #          print ("it starts at ", vStartHour)
+ #          print("and finishes an", vDuration/3600, "hours later")
+            vBkoutStart = (vStartHour+vDuration/3600)
+            if vBkoutStart>24: vBkoutStart -= 24
+            vBkoutDayOfWeek = nbuDayOfWeek[i]
+            print("BKO_PERIOD," , vBkoutDayOfWeek , "," , int(vBkoutEnd) , ", 0 ," , int(vBkoutStart), ", 0")
 
 
 
