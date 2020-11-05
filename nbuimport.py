@@ -78,6 +78,7 @@ nbuDayOfWeek = {
 # vScheduleType - saved NBU schedule type
 # vRpoInterval
 
+vPolicyType = ""
 # for each policy generate line
 while 1 == 1:
     policy = streamPolicies.readline()
@@ -88,12 +89,14 @@ while 1 == 1:
         break
 
     if tab_params[0] == "CLASS":
+        # print RPO of a previous Policy
+        print("RPO,", vPolicyType)
         vPolicyName = tab_params[1]
   #      print ("POLICY: ", vPolicyName)
 
     if tab_params[0] == "INFO":
         vPolicyType = nbu_policy_type[tab_params[1]]
-        print ("RPO," , vPolicyType)
+   #     print ("RPO," , vPolicyType)
 
     if tab_params[0] == "SCHED":
   #      print ("SCHED: ", tab_params)
