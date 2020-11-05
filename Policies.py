@@ -51,12 +51,31 @@ class Schedule:
 
 def schedule_generate(schedule):
     if schedule.type == "full":
-        pythCode = "body.full_scheduling_policy = SchedulingPolicy()"
+        pythCode = """body.full_scheduling_policy = SchedulingPolicy()
+body.full_scheduling_policy.continuous_schedule = ContinuousSchedule()
+body.full_scheduling_policy.daily_schedule = DailySchedule()
+body.full_scheduling_policy.rpo_schedule = RpoSchedule() """
 
+
+    if schedule.type == "incr":
+        pythCode = """body.incremental_scheduling_policy = SchedulingPolicy()
+body.incremental_scheduling_policy.continuous_schedule = ContinuousSchedule()
+body.incremental_scheduling_policy.daily_schedule = DailySchedule()
+body.incremental_scheduling_policy.monthly_schedule = MonthlySchedule()
+body.incremental_scheduling_policy.rpo_schedule = RpoSchedule()"""
+
+    if schedule.type == "log":
+        pythCode = """body.log_scheduling_policy = SchedulingPolicy()
+body.log_scheduling_policy.continuous_schedule = ContinuousSchedule()
+body.log_scheduling_policy.daily_schedule = DailySchedule()
+body.log_scheduling_policy.monthly_schedule = MonthlySchedule()
+body.log_scheduling_policy.rpo_schedule = RpoSchedule()
+"""
 
 
     return pythCode
 
+
 term=Schedule()
-term.type = "full"
+term.type = "incr"
 print (schedule_generate(term))
