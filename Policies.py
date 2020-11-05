@@ -72,9 +72,12 @@ body.log_scheduling_policy.monthly_schedule = MonthlySchedule()
 body.log_scheduling_policy.rpo_schedule = RpoSchedule()
 """
 
-
     return pythCode
 
+def rpo_generate(rpo):
+
+    pythCode = ""
+    return pythCode
 
 term=Schedule()
 term.type = "incr"
