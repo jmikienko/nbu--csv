@@ -108,7 +108,6 @@ body.rpo_policy_settings.environment_type_job_params.pure_parameters = SanEnvJob
 body.rpo_policy_settings.environment_type_job_params.sql_parameters = SqlEnvJobParameters()
 body.rpo_policy_settings.environment_type_job_params.vmware_parameters = VmwareEnvJobParameters()
 body.rpo_policy_settings.indexing_policy = IndexingPolicy()
-
     """
     return pythCode
 
@@ -124,7 +123,14 @@ body.blackout_periods[0].start_time.minute = 3
     """
     return pythcode
 
-def
+def ext_ret_pol_generate(ext_ret_pol):
+    pythcode = """ body.extended_retention_policies.append(ExtendedRetentionPolicy())
+body.extended_retention_policies[0].backup_run_type = BackupRunTypeEnum.KREGULAR
+body.extended_retention_policies[0].days_to_keep = 2
+body.extended_retention_policies[0].multiplier = 2
+body.extended_retention_policies[0].periodicity = PeriodicityExtendedRetentionPolicyEnum.KHOUR
+        """
+    return pythcode
 
 term=Schedule()
 term.type = "incr"
