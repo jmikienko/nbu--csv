@@ -76,8 +76,55 @@ body.log_scheduling_policy.rpo_schedule = RpoSchedule()
 
 def rpo_generate(rpo):
 
-    pythCode = ""
+    pythCode = """ body.rpo_policy_settings = RpoPolicySettings()
+body.rpo_policy_settings.alerting_config = AlertingConfig()
+body.rpo_policy_settings.environment_type_job_params = EnvironmentTypeJobParameters()
+body.rpo_policy_settings.environment_type_job_params.aws_snapshot_parameters = AwsSnapshotManagerParameters()
+body.rpo_policy_settings.environment_type_job_params.hyperv_parameters = HypervEnvJobParameters()
+body.rpo_policy_settings.environment_type_job_params.nas_parameters = NasEnvJobParameters()
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.data_migration_job_parameters = DataMigrationJobParameters()
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.data_migration_job_parameters.cold_file_window = 2
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.data_migration_job_parameters.file_path_filter = FilePathFilter()
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.data_migration_job_parameters.file_path_filter.exclude_filters = ['23']
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.data_migration_job_parameters.file_path_filter.protect_filters = ['23']
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.data_migration_job_parameters.file_selection_policy = FileSelectionPolicyEnum.KOLDERTHAN
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.data_migration_job_parameters.file_size_bytes = 32
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.data_migration_job_parameters.file_size_policy = FileSizePolicyEnum.KGREATERTHAN
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.data_migration_job_parameters.nfs_mount_path = 'dfsd'
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.data_migration_job_parameters.target_view_name = 'dfsf'
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.enable_faster_incremental_backups = True
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.file_path_filters = FilePathFilter()
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.file_path_filters.exclude_filters = ['wfe']
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.file_path_filters.protect_filters = ['edwe']
+body.rpo_policy_settings.environment_type_job_params.nas_parameters.nas_protocol = NasProtocolNasEnvJobParametersEnum.KNFS3
+body.rpo_policy_settings.environment_type_job_params.office_365_parameters = Office365EnvJobParameters()
+body.rpo_policy_settings.environment_type_job_params.office_365_parameters.onedrive_parameters = OneDriveEnvJobParameters()
+body.rpo_policy_settings.environment_type_job_params.office_365_parameters.onedrive_parameters.file_path_filter = FilePathFilter()
+body.rpo_policy_settings.environment_type_job_params.office_365_parameters.outlook_parameters = OutlookEnvJobParameters()
+body.rpo_policy_settings.environment_type_job_params.office_365_parameters.outlook_parameters.file_path_filter = FilePathFilter()
+body.rpo_policy_settings.environment_type_job_params.physical_parameters = PhysicalEnvJobParameters()
+body.rpo_policy_settings.environment_type_job_params.physical_parameters.file_path_filters = FilePathFilter()
+body.rpo_policy_settings.environment_type_job_params.pure_parameters = SanEnvJobParameters()
+body.rpo_policy_settings.environment_type_job_params.sql_parameters = SqlEnvJobParameters()
+body.rpo_policy_settings.environment_type_job_params.vmware_parameters = VmwareEnvJobParameters()
+body.rpo_policy_settings.indexing_policy = IndexingPolicy()
+
+    """
     return pythCode
+
+def bko_period_generate(bko_period):
+    pythcode = """ body.blackout_periods = []
+body.blackout_periods.append(BlackoutPeriod())
+body.blackout_periods[0].end_time = TimeOfDay()
+body.blackout_periods[0].end_time.hour = 2
+body.blackout_periods[0].end_time.minute = 2
+body.blackout_periods[0].start_time = TimeOfDay()
+body.blackout_periods[0].start_time.hour = 3
+body.blackout_periods[0].start_time.minute = 3
+    """
+    return pythcode
+
+def
 
 term=Schedule()
 term.type = "incr"
