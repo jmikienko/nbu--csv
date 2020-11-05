@@ -80,8 +80,12 @@ nbuDayOfWeek = {
 
 vPolicyType = ""
 # for each policy generate line
+
+numberOfLinesRead = 0
+
 while 1 == 1:
     policy = streamPolicies.readline()
+    numberOfLinesRead += 1
     tab_params = policy.split(" ")
 
     if tab_params[0] == "END":
@@ -90,7 +94,8 @@ while 1 == 1:
 
     if tab_params[0] == "CLASS":
         # print RPO of a previous Policy
-        print("RPO,", vPolicyType)
+        if numberOfLinesRead > 1:
+            print("RPO,", vPolicyType)
         vPolicyName = tab_params[1]
   #      print ("POLICY: ", vPolicyName)
 
