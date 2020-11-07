@@ -124,22 +124,27 @@ while 1 == 1:
     if tab_params[0] == "SCHEDWIN":
 
         print("SCHED,", vSchedType, ",some desc,rpo,,,,,KHOURS," , int(vRpoInterval) , ",,,,,,,,,,")
+
+# the first blackout starts at 0
+        vBkoutStart = 0
         for i in [1,3,5,7,9,11,13]:
-# cohesity blockout from midnight till netbackup start of window
-            vBkoutStart = 0
+# cohesity blackout from midnight till netbackup start of window
             vBkoutEnd=int (tab_params[i])
             vBkoutEnd /=  3600
             vBkoutDayOfWeek = nbuDayOfWeek[i]
             print("BKO_PERIOD," , vBkoutDayOfWeek , "," , int(vBkoutEnd) , ", 0 ," , int(vBkoutStart), ", 0")
 
-# cohesity blockout from end of window till midnight
-            vBkoutEnd = 0
+# cohesity blackout from end of window till midnight
+            vBkoutEnd = 23
             vStartHour=int (tab_params[i])
             vStartHour /=  3600
             vDuration = int (tab_params[i+1])
             vBkoutStart = (vStartHour+vDuration/3600)
-            if vBkoutStart>24: vBkoutStart -= 24
-            vBkoutDayOfWeek = nbuDayOfWeek[i]
-            print("BKO_PERIOD," , vBkoutDayOfWeek , "," , int(vBkoutEnd) , ", 0 ," , int(vBkoutStart), ", 0")
+            if vBkoutStart>24:
+                vBkoutStart -= 24
+            if vBkoutStart<24:
+                vBkoutDayOfWeek = nbuDayOfWeek[i]
+                print("BKO_PERIOD,", vBkoutDayOfWeek, ",", int(vBkoutEnd), ", 0 ,", int(vBkoutStart), ", 0")
+                vBkoutStart = 0
 
 
