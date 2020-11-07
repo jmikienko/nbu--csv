@@ -97,44 +97,49 @@ while 1 == 1:
         if numberOfLinesRead > 1:
             print("RPO,", vPolicyType)
         vPolicyName = tab_params[1]
-  #      print ("POLICY: ", vPolicyName)
+
 
     if tab_params[0] == "INFO":
         vPolicyType = nbu_policy_type[tab_params[1]]
-   #     print ("RPO," , vPolicyType)
+
 
     if tab_params[0] == "SCHED":
-  #      print ("SCHED: ", tab_params)
+
         if tab_params[2] == "0":
             vSchedType = "Full"
-  #          print("this is ", vSchedType)
+
         if tab_params[2] == "1":
             vSchedType = "Incr"
-   #         print("this is", vSchedType )
+
         if tab_params[2] == "2":
             vSchedType = "Incr"
-#          print("this is ", vSchedType)
+
         vRpoInterval = int(tab_params[4])/3600
- #       print("it runs every", vRpoInterval , "hours")
+
 
         vRet_days = nbu_ret_level_days[tab_params[5]]
 
         print("POLICY," , vPolicyName.strip() ,",some description," , vRet_days , "," , vRet_days , "," , vRet_days)
 
     if tab_params[0] == "SCHEDWIN":
- #       print ("WINDOW: ", tab_params)
+
         print("SCHED,", vSchedType, ",some desc,rpo,,,,,KHOURS," , int(vRpoInterval) , ",,,,,,,,,,")
         for i in [1,3,5,7,9,11,13]:
+# cohesity blockout from midnight till netbackup start of window
+            vBkoutStart = 0
+            vBkoutEnd=int (tab_params[i])
+            vBkoutEnd /=  3600
+            vBkoutDayOfWeek = nbuDayOfWeek[i]
+            print("BKO_PERIOD," , vBkoutDayOfWeek , "," , int(vBkoutEnd) , ", 0 ," , int(vBkoutStart), ", 0")
+
+# cohesity blockout from end of window till midnight
             vBkoutEnd = 0
             vStartHour=int (tab_params[i])
             vStartHour /=  3600
             vDuration = int (tab_params[i+1])
- #          print ("it starts at ", vStartHour)
- #          print("and finishes an", vDuration/3600, "hours later")
             vBkoutStart = (vStartHour+vDuration/3600)
             if vBkoutStart>24: vBkoutStart -= 24
             vBkoutDayOfWeek = nbuDayOfWeek[i]
             print("BKO_PERIOD," , vBkoutDayOfWeek , "," , int(vBkoutEnd) , ", 0 ," , int(vBkoutStart), ", 0")
-
 
 
