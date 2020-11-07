@@ -140,11 +140,11 @@ while 1 == 1:
             vStartHour /=  3600
             vDuration = int (tab_params[i+1])
             vBkoutStart = (vStartHour+vDuration/3600)
-            if vBkoutStart>24:
-                vBkoutStart -= 24
+
             if vBkoutStart<24:
                 vBkoutDayOfWeek = nbuDayOfWeek[i]
                 print("BKO_PERIOD,", vBkoutDayOfWeek, ",", int(vBkoutEnd), ", 0 ,", int(vBkoutStart), ", 0")
                 vBkoutStart = 0
-
+            if vBkoutStart>24:
+                vBkoutStart -= 24
 
