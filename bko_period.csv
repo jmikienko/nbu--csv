@@ -1,0 +1,3 @@
+BKO_PERIOD,dayOfWeek,endHour,endMinute,startHour,startMinute
+BKO_PERIOD,KMONDAY,22,45,16,55
+BKO_PERIOD,KWEDNESDAY,23,43,15,49

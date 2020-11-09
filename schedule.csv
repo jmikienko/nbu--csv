@@ -1,0 +1,5 @@
+SCHED,type,description,frequencyType,dayForWeekly,dayForMonthlyweekForMonthly,,intervalMinutes,intervalUnitForRPO,multiplyerOfInterval
+SCHED,Full,this is the first schedule,monthly,KSUNDAY,KMONDAY,KSECOND,,,
+SCHED,Incr,this is the second schedule,daily,KFRIDAY,,,,,
+SCHED,Log,this is the third schedule,continuous,,,,22,,
+SCHED,System,this is the fourth schedule,rpo,,,,,KDAYS,1

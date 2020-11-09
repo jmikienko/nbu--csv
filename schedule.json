@@ -1,0 +1,50 @@
+[
+ {
+   "SCHED": "SCHED",
+   "type": "Full",
+   "description": "this is the first schedule",
+   "frequencyType": "monthly",
+   "dayForWeekly": "KSUNDAY",
+   "dayForMonthly": "KMONDAY",
+   "weekForMonthly": "KSECOND",
+   "intervalMinutes": null,
+   "intervalUnitForRPO": "",
+   "multiplyerOfInterval": null
+ },
+ {
+   "SCHED": "SCHED",
+   "type": "Incr",
+   "description": "this is the second schedule",
+   "frequencyType": "daily",
+   "dayForWeekly": "KFRIDAY",
+   "dayForMonthly": "",
+   "weekForMonthly": "",
+   "intervalMinutes": null,
+   "intervalUnitForRPO": "",
+   "multiplyerOfInterval": null
+ },
+ {
+   "SCHED": "SCHED",
+   "type": "Log",
+   "description": "this is the third schedule",
+   "frequencyType": "continuous",
+   "dayForWeekly": "",
+   "dayForMonthly": "",
+   "weekForMonthly": "",
+   "intervalMinutes": 22,
+   "intervalUnitForRPO": "",
+   "multiplyerOfInterval": null
+ },
+ {
+   "SCHED": "SCHED",
+   "type": "System",
+   "description": "this is the fourth schedule",
+   "frequencyType": "rpo",
+   "dayForWeekly": "",
+   "dayForMonthly": "",
+   "weekForMonthly": "",
+   "intervalMinutes": null,
+   "intervalUnitForRPO": "KDAYS",
+   "multiplyerOfInterval": 1
+ }
+]

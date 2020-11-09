@@ -1,0 +1,18 @@
+[
+ {
+   "BKO_PERIOD": "BKO_PERIOD",
+   "dayOfWeek": "KMONDAY",
+   "endHour": 22,
+   "endMinute": 45,
+   "startHour": 16,
+   "startMinute": 55
+ },
+ {
+   "BKO_PERIOD": "BKO_PERIOD",
+   "dayOfWeek": "KWEDNESDAY",
+   "endHour": 23,
+   "endMinute": 43,
+   "startHour": 15,
+   "startMinute": 49
+ }
+]
