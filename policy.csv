@@ -1,0 +1,2 @@
+type,name,description,daysToKeep,daysToKeepLog,daysToKeepSystem,numLinkedPolicies,parentPolicyId,retries,retryIntervalMins,"type_protection_policy (values: KRPO, KREGULAR)","WormRetentionType_ProtectionPolicyRequest (KNONE,KCOMPLIANCE,KADMINISTRATIVE)",skipIntervalMins
+POLICY,policyno1,This is the first policy,11,22,33,5,3,4,7,KRPO,KCOMPLIANCE,6

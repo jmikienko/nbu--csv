@@ -1,0 +1,17 @@
+[
+ {
+   "type": "POLICY",
+   "name": "policyno1",
+   "description": "This is the first policy",
+   "daysToKeep": 11,
+   "daysToKeepLog": 22,
+   "daysToKeepSystem": 33,
+   "numLinkedPolicies": 5,
+   "parentPolicyId": 3,
+   "retries": 4,
+   "retryIntervalMins": 7,
+   "type_protection_policy": "KRPO",
+   "WormRetentionType_ProtectionPolicy": "KCOMPLIANCE",
+   "skipIntervalMins": 6
+ }
+]
