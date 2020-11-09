@@ -1,0 +1,11 @@
+,type,param01,param02,param03,param04,param05,param06,param07,param08,param09,param10,param11,param12,param13,param14
+RPO,aws,amiCreationFrequency,createAMI,,,,,,,,,,,,
+RPO,hyperv,fallBackToCrashConsistent,,,,,,,,,,,,,
+RPO,nas,continueOnError,MigrationExcludeFiltrers (a:/,/home),MigrationProtectFilters,FileSelectionPolicy,fileSizeBytes,FileSizePolicy,nfsMountPath,targetViewName,enableFasterIncrementalBackups,NasProtocol_NasEnvJobParameters,excludeFiltrers (a:/,/home),protectFilters
+RPO,o365,OneDrive_excludeFiltrers (a:/,/home),onedrive_protectFilters,ShouldbackupOnedrive,Outlook_excludeFiltrers (a:/,/home),Outlook_protectFilers,ShouldbackupMailbox,,,,,,
+RPO,physical,excludeFiltrers (a:/,/home),protectFilters,incrementalSnapshotUponRestart,,,,,,,,,,
+RPO,pure,maxSnapshotsOnPrimary,,,,,,,,,,,,,
+RPO,sql,aagPreference,aagPreferenceFromSqlServer,backupSystemDatabases,BackupType_SqlEnvJobParameters,backupVolumesOnly,incrementalSnapshotUponRestart,isCopyOnlyFull,numStreams,UserDatabasePreference,withClause,,,,
+RPO,vmware,c,d,e,2,IDE,3,,,FALSE,,,,,
+RPO,indexing,aaa,bbb,ccc,ddd,eee,fff,ggg,hhh,disable,,,,,
+RPO,alerting,,,,,,,,,,,,,,
