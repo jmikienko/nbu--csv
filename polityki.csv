@@ -21,8 +21,8 @@ RPO,sql,aagPreference,aagPreferenceFromSqlServer,backupSystemDatabases,BackupTyp
 RPO,vmware,c;d;e,2,IDE,3,,,FALSE,,,,,,,,,,,
 RPO,indexing,aaa;bbb;ccc;ddd,eee;fff;ggg;hhh,disable,,,,,,,,,,,,,,,
 RPO,alerting,,,,,,,,,,,,,,,,,,
-EXT_RET_POL,,,kFull,30,5,,,kDay,,,,,,,,,,,
-EXT_RET_POL,,,kLog,20,3,,,kHour,,,,,,,,,,,
+EXT_RET_POL,kFull,30,5,kDay
+EXT_RET_POL,kLog,20,3,kHour
 POLICY,policyno2,This is the second policy,5,5,5,,,,,,,,,,,,,,
 SCHED,Full,adf,32,24,5,,,,,,,,,,,,,,
 SCHED,Incr, afd,23,32,34,,,,,,,,,,,,,,
